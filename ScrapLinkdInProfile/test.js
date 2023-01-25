@@ -1,0 +1,1 @@
+//write a funtion to validate the eamil in javascript

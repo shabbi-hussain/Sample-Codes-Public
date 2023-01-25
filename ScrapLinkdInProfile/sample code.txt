@@ -1,0 +1,36 @@
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+import time
+
+# Initialize the web driver
+driver = webdriver.Firefox()
+
+# Navigate to LinkedIn
+driver.get("https://www.linkedin.com/")
+
+# Find the email and password input fields
+email = driver.find_element_by_id("username")
+password = driver.find_element_by_id("password")
+
+# Enter your credentials
+email.send_keys("YOUR_EMAIL")
+password.send_keys("YOUR_PASSWORD")
+
+# Click the login button
+driver.find_element_by_xpath("//button[@type='submit']").click()
+
+# Wait for the page to load
+time.sleep(5)
+
+# Navigate to the profile of the desired user
+driver.get("https://www.linkedin.com/in/USER_PROFILE_NAME")
+
+# Extract the information you want from the page
+name = driver.find_element_by_xpath("//span[@class='inline t-24 t-black t-normal break-words']").text
+location = driver.find_element_by_xpath("//span[@class='t-16 t-black t-normal inline-block']").text
+
+print(name)
+print(location)
+
+# close the browser
+driver.quit()
